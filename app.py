@@ -2,27 +2,43 @@ from flask import Flask, request, render_template
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route("/", methods=["GET", "POST"])
 def index():
-    return(render_template('index.html'))
+    return render_template("index.html")
 
-@app.route("/main", methods=['GET', 'POST'])
+
+@app.route("/main", methods=["GET", "POST"])
 def main():
-    user_name = request.form.get('q')
-    return(render_template("main.html"))
+    user_name = request.form.get("q")
+    return render_template("main.html")
 
-@app.route("/ethical_test", methods=['GET', 'POST'])
+
+@app.route("/foodexp", methods=["GET", "POST"])
+def foodexp():
+    return render_template("foodexp.html")
+
+
+@app.route("/ethical_test", methods=["GET", "POST"])
 def ethical_test():
     return render_template("ethical_test.html")
 
-@app.route("/test_result", methods=['POST', 'Get'])
+
+@app.route("/test_result", methods=["POST", "GET"])
 def test_result():
     answer = request.form.get("answer")
     if answer == "false":
         return render_template("pass.html")
-    elif answer == "true": 
+    elif answer == "true":
         return render_template("fail.html")
 
 
-if __name__ == '__main__':
-    app.run()
+@app.route("/foodexp_pred", methods=["POST", "GET"])
+def food_exp():
+    q = request.form.get("q")
+    r = 0.4851 * float(q) + 147.4
+    return render_template("foodexp_pred.html", r=r)
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
