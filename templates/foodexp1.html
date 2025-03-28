@@ -7,13 +7,9 @@
     <div class="container">
         <h2>Predict Food Expenditure</h2>
         <h4>Please Enter Your Income</h4>
-        <form action="/foodexp_pred" method="post">
-            <input type="number" step="0.01" name="q"><br>
-            <input type="submit" value="Enter">
-        </form>
 
         <input type="number" id="salary" placeholder="Salary">
-        <input type="button" value="Predict" onclick="predict_foodexp()">
+        <button class="btn" onclick="predict_foodexp()">Enter</button>
         <p id="expenditure"></p>
 
         <form action="/main" method="POST">
@@ -23,11 +19,9 @@
     </div>
     <script>
         function predict_foodexp(){
-            var salary = document.getElementById("salary").value
-            console.log("Salary: " + salary)
-            document.getElementById("expenditure").innerHTML = "Predicted Food Expenditure: " + (0.4851 * salary + 147.4); // Assuming 20% of salary is spent on food
-
+            var salary = document.getElementById("salary").value;
+            document.getElementById("expenditure").innerText = 
+                "Predicted Food Expenditure: " + (0.4851 * salary + 147.4);
         }
-
     </script>
 </body>
