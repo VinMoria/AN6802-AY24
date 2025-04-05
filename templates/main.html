@@ -33,6 +33,8 @@
             <input type="submit" , value="FAQ">
         </form>
 
+        <button class="btn" onclick="start_bot()">Telegram Bot</button>
+
         <form action="/userLog" method="POST">
             <input type="submit" , value="View User Log">
         </form>
@@ -42,6 +44,26 @@
         </form>
 
     </div>
+    <script>
+        function start_bot() {
+            fetch('/start_bot', {
+                method: 'POST', // 或 'GET'，根据你的 API 设计
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => response.text())  // 使用 text() 代替 json()
+                .then(data => {
+                    if (data === "success") {
+                        alert("Successfully start Telegram Bot");
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    </script>
 </body>
+
 
 </html>
