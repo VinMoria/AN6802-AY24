@@ -157,7 +157,7 @@ def start_bot():
                     requests.get(msg)
                 else:
                     if r == "exit":
-                        msg = url + f"sendMessage?chat_id={chat}&text={"Bye~"}"
+                        msg = url + f"sendMessage?chat_id={chat}&text=Bye~"
                         requests.get(msg)
                         print("Bot Exit")
                         break
